@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamad Dwi Cahyono | Portofolio Teknik Komputer dan Network</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --electric-blue: #2563eb;
+            --teal-green: #0d9488;
+            --orange-accent: #f97316;
+            --dark-blue: #1e40af;
+            --dark-teal: #0f766e;
+            --light-blue: #dbeafe;
+            --light-teal: #ccfbf1;
+            --black: #000000;
+            --dark-gray: #1f2937;
+            --gray: #6b7280;
+            --light-gray: #f3f4f6;
+            --white: #ffffff;
+            --transition: all 0.4s ease;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--light-blue), var(--light-teal));
+            color: var(--dark-gray);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        section:hover::before {
+            transform: scaleX(1);
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-blue);
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after, h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--electric-blue), var(--teal-green));
+            transition: var(--transition);
+        }
+
+        h1:hover::after, h2:hover::after {
+            width: 100%;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            color: var(--dark-gray);
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--electric-blue), var(--dark-blue));
+            color: var(--white);
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05em;
+            transition: var(--transition);
+            border: 2px solid var(--electric-blue);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--dark-blue), var(--teal-green));
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--electric-blue);
+            border: 2px solid var(--electric-blue);
+        }
+
+        .btn-secondary::before {
+            background: var(--light-blue);
+        }
+
+        .btn-secondary:hover {
+            color: var(--white);
+        }
+
+        .btn-orange {
+            background: linear-gradient(135deg, var(--orange-accent), #ea580c);
+            border: 2px solid var(--orange-accent);
+        }
+
+        .btn-orange::before {
+            background: linear-gradient(135deg, #ea580c, var(--dark-teal));
+        }
+
+        .btn-teal {
+            background: linear-gradient(135deg, var(--teal-green), var(--dark-teal));
+            border: 2px solid var(--teal-green);
+        }
+
+        .btn-teal::before {
+            background: linear-gradient(135deg, var(--dark-teal), var(--electric-blue));
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background: rgba(37, 99, 235, 0.95);
+            box-shadow: var(--shadow-lg);
+        }
+
+        header.scrolled .logo,
+        header.scrolled .nav-links a {
+            color: var(--white);
+        }
+
+        header.scrolled .nav-links a::after {
+            background: var(--white);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 800;
+            color: var(--electric-blue);
+            text-decoration: none;
+            transition: var(--transition);
+            background: linear-gradient(135deg, var(--electric-blue), var(--teal-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-blue);
+            font-weight: 600;
+            font-size: 1.05em;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--electric-blue), var(--teal-green));
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--electric-blue);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding-top: 80px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(13, 148, 136, 0.15));
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.8em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--electric-blue), var(--teal-green), var(--orange-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h2 {
+            font-size: 1.8em;
+            color: var(--dark-blue);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            color: var(--dark-gray);
+            font-weight: 500;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 10%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, var(--electric-blue), var(--teal-green));
+            border-radius: 50%;
+            animation: pulse 3s ease-in-out infinite;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            background: linear-gradient(135deg, var(--teal-green), var(--orange-accent));
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite reverse;
+            opacity: 0.3;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--white);
+            position: relative;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text {
+            animation: slideInLeft 1s ease;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            animation: slideInRight 1s ease;
+            background: linear-gradient(135deg, var(--electric-blue), var(--teal-green));
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+            transition: var(--transition);
+        }
+
+        .about-image:hover::before {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+        }
+
+        .about-image span {
+            font-size: 8em;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Skills Section */
+        .skills {
+            background: var(--light-blue);
+            background: linear-gradient(135deg, var(--light-blue), var(--light-teal));
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--electric-blue), var(--teal-green));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(37, 99, 235, 0.3);
+        }
+
+        .skill-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .skill-name {
+            font-weight: 700;
+            font-size: 1.15em;
+            color: var(--dark-blue);
+        }
+
+        .skill-percentage {
+            font-weight: 800;
+            color: var(--teal-green);
+            font-size: 1.2em;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: var(--light-gray);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            margin-top: 10px;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--electric-blue), var(--teal-green));
+            border-radius: 10px;
+            width: 0;
+            transition: width 1.5s ease;
+            position: relative;
+        }
+
+        .progress::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 6px;
+            height: 16px;
+            background: var(--white);
+            border-radius: 3px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background: var(--white);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            height: 280px;
+            background: linear-gradient(135deg, var(--electric-blue), var(--teal-green));
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            text-align: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-title {
+            color: var(--white);
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            transform: translateY(20px);
+            transition: var(--transition);
+            font-weight: 700;
+        }
+
+        .portfolio-item:hover .portfolio-title {
+            transform: translateY(0);
+        }
+
+        .portfolio-desc {
+            color: var(--light-blue);
+            font-size: 1.05em;
+            transform: translateY(20px);
+            transition: var(--transition);
+            transition-delay: 0.1s;
+            line-height: 1.6;
+        }
+
+        .portfolio-item:hover .portfolio-desc {
+            transform: translateY(0);
+        }
+
+        .portfolio-tech {
+            margin-top: 15px;
+            color: var(--orange-accent);
+            font-weight: 600;
+            font-size: 0.95em;
+            transform: translateY(20px);
+            transition: var(--transition);
+            transition-delay: 0.2s;
+        }
+
+        .portfolio-item:hover .portfolio-tech {
+            transform: translateY(0);
+        }
+
+        /* Experience Section */
+        .experience {
+            background: linear-gradient(135deg, var(--light-teal), var(--light-blue));
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 50px auto 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(0deg, var(--electric-blue), var(--teal-green));
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+            width: calc(50% - 40px);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: calc(50% + 40px);
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            transition: var(--transition);
+            border-left: 4px solid var(--electric-blue);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+            border-left-color: var(--teal-green);
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--white);
+            top: 35px;
+            border: 4px solid var(--electric-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--white);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -58px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -58px;
+        }
+
+        .timeline-date {
+            font-weight: 800;
+            color: var(--orange-accent);
+            margin-bottom: 10px;
+            font-size: 1.15em;
+        }
+
+        .timeline-title {
+            font-size: 1.4em;
+            color: var(--dark-blue);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--white);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--light-blue), var(--light-teal));
+            border-radius: 15px;
+            transition: var(--transition);
+            border-left: 4px solid var(--electric-blue);
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            background: linear-gradient(135deg, var(--electric-blue), var(--teal-green));
+            color: var(--white);
+            border-left-color: var(--orange-accent);
+        }
+
+        .contact-icon {
+            font-size: 1.8em;
+            color: var(--electric-blue);
+            min-width: 40px;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover .contact-icon {
+            color: var(--white);
+            transform: scale(1.3);
+        }
+
+        .contact-item h3 {
+            margin-bottom: 5px;
+            color: var(--dark-blue);
+            font-size: 1.2em;
+        }
+
+        .contact-item:hover h3,
+        .contact-item:hover p {
+            color: var(--white);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--light-gray);
+            border-radius: 12px;
+            font-size: 1em;
+            transition: var(--transition);
+            background: var(--light-blue);
+            font-family: inherit;
+            color: var(--dark-gray);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--electric-blue);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 160px;
+            resize: vertical;
+        }
+
+        /* CV Download Section */
+        .cv-section {
+            background: linear-gradient(135deg, var(--dark-blue), var(--dark-teal));
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cv-section h2 {
+            color: var(--white);
+            font-size: 2.5em;
+        }
+
+        .cv-section h2::after {
+            background: var(--white);
+        }
+
+        .cv-section p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cv-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 40px auto 0;
+        }
+
+        .cv-feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cv-feature:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .cv-feature i {
+            font-size: 2.5em;
+            color: var(--orange-accent);
+            margin-bottom: 15px;
+        }
+
+        .cv-feature h3 {
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .cv-feature p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark-blue), var(--dark-teal));
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            font-size: 1.5em;
+            margin-bottom: 25px;
+        }
+
+        .footer-column h3::after {
+            background: var(--orange-accent);
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            transform: translateX(5px);
+        }
+
+        .footer-links a i {
+            color: var(--orange-accent);
+            font-size: 0.9em;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--white);
+            font-size: 1.2em;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .social-link:hover {
+            background: var(--white);
+            color: var(--electric-blue);
+            transform: translateY(-5px);
+            border-color: var(--white);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95em;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: translateY(-50%) scale(1);
+                opacity: 0.2;
+            }
+            50% {
+                transform: translateY(-50%) scale(1.1);
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero h2 {
+                font-size: 1.4em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            .about-content,
+            .contact-container,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: calc(100% - 80px);
+                left: 60px !important;
+                text-align: left !important;
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -58px;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .cv-section h2 {
+                font-size: 1.8em;
+            }
+
+            .cv-section p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">MDC</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Tentang Saya</a></li>
+                    <li><a href="#skills">Keahlian</a></li>
+                    <li><a href="#portfolio">Portofolio</a></li>
+                    <li><a href="#experience">Pengalaman</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Mohamad Dwi Cahyono</h1>
+                <h2>Teknik Komputer dan Jaringan</h2>
+                <p>Fresh graduate dengan passion di bidang teknologi informasi. Siap menghadapi tantangan baru dan berkembang bersama tim yang solid.</p>
+                <div class="hero-btns">
+                    <a href="#portfolio" class="btn">Lihat Portofolio</a>
+                    <a href="#cv-download" class="btn btn-orange">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                    <a href="#contact" class="btn btn-teal">Hubungi Saya</a>
+                </div>
+            </div>
+            <div class="hero-image"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Tentang Saya</h2>
+                    <p><strong>Mohamad Dwi Cahyono</strong> - Fresh graduate lulusan Teknik Komputer dan Jaringan (TKJ) dengan pemahaman dasar jaringan komputer, sistem operasi, dan troubleshooting perangkat.</p>
+                    <p>Terbiasa bekerja secara disiplin, bertanggung jawab, dan mampu belajar hal baru dengan cepat. Memiliki minat untuk berkembang di bidang teknologi informasi serta siap bekerja secara individu maupun tim.</p>
+                    <p>Selalu berusaha memberikan yang terbaik dalam setiap pekerjaan dan terbuka untuk berbagai kesempatan pengembangan diri di dunia IT.</p>
+                </div>
+                <div class="about-image">
+                    <span>👨‍💻</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 50px;">Keahlian Saya</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">Troubleshooting PC</span>
+                        <span class="skill-percentage">90%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 95%;"></div>
+                    </div>
+                    <p style="margin-top: 10px; color: var(--gray);">Menangani troubleshooting sederhana pada pc/komputer</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">Mikrotik Router</span>
+                        <span class="skill-percentage">85%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%;"></div>
+                    </div>
+                    <p style="margin-top: 10px; color: var(--gray);">IP, DNS, Firewall, DHCP</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">Maintenance Jaringan</span>
+                        <span class="skill-percentage">90%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 90%;"></div>
+                    </div>
+                    <p style="margin-top: 10px; color: var(--gray);">Maintenance perangkat jaringan</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">Dasar Jaringan</span>
+                        <span class="skill-percentage">87%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 87%;"></div>
+                    </div>
+                    <p style="margin-top: 10px; color: var(--gray);">Memahami dasar-dasar jaringan komputer</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">Problem Solving</span>
+                        <span class="skill-percentage">92%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 92%;"></div>
+                    </div>
+                    <p style="margin-top: 10px; color: var(--gray);">Kemampuan problem solving dan kerja tim</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">Sistem Operasi</span>
+                        <span class="skill-percentage">88%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 88%;"></div>
+                    </div>
+                    <p style="margin-top: 10px; color: var(--gray);">Windows dan Linux</p>
+                </div>
+                                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">Microsoft Office</span>
+                        <span class="skill-percentage">85%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 88%;"></div>
+                    </div>
+                    <p style="margin-top: 10px; color: var(--gray);">Membuat surat dan dokumen sederhana</p>
+                </div>
+                                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">Kali Linux</span>
+                        <span class="skill-percentage">89%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 92%;"></div>
+                    </div>
+                    <p style="margin-top: 10px; color: var(--gray);">Kemampuan memecahkan masalah dan memahami kode sederhana</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 50px;">Portofolio/Karya</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Website Perusahaan</h3>
+                        <p class="portfolio-desc">Pengembangan website sederhana untuk penggunaan pribadi dengan fitur lengkap dan responsif </p>
+                        <p class="portfolio-tech">HTML, CSS, JavaScript, </p>
+                    </div>
+                </div>
+
+               
+
+                <div class="portfolio-item">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Network Enginering</h3>
+                        <p class="portfolio-desc">Menangani trouble jaringan untuk kantor dengan Mikrotik RouterOS, firewall, dan bandwidth management</p>
+                        <p class="portfolio-tech">Mikrotik, RouterOS</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Security Implementation</h3>
+                        <p class="portfolio-desc">Implementasi sistem keamanan jaringan dengan firewall rules dan monitoring tools</p>
+                        <p class="portfolio-tech">Firewall, Network Security</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 50px;">Pengalaman Kerja</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022 - Sekarang</div>
+                        <h3 class="timeline-title">Cleaning Service</h3>
+                        <p>Bekerja sebagai cleaning service selama 4 tahun, mengembangkan disiplin kerja dan tanggung jawab yang tinggi dalam menjaga kebersihan.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jun 2025 - Des 2025</div>
+                        <h3 class="timeline-title">Magang di Internet Provider</h3>
+                        <p>Magang di tempat penyedia internet selama 6 bulan, mempelajari instalasi jaringan, troubleshooting koneksi, konfigurasi Mikrotik, dan pelayanan pelanggan.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025 - Sekarang</div>
+                        <h3 class="timeline-title">Freelance IT Support</h3>
+                        <p>Menyediakan layanan IT support untuk berbagai klien, termasuk troubleshooting hardware/software, konfigurasi jaringan, dan maintenance sistem.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Download Section -->
+    <section id="cv-download" class="cv-section">
+        <div class="container">
+            <h2>Download CV Saya</h2>
+            <p>CV ini saya rancang khusus dengan format ATS-friendly (Applicant Tracking System) untuk memastikan informasi penting terdeteksi dengan baik oleh sistem HRD.</p>
+            
+            <a href="cv-mohamad-dwi-cahyono.pdf"  class="btn btn-orange" style="margin: 30px 0; padding: 16px 45px; font-size: 1.2em;">
+                <i class="fas fa-download"></i> Download CV PDF - Mohamad Dwi Cahyono
+            </a>
+            
+            <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 40px;">
+                <i class="fas fa-file-pdf"></i> Format: PDF | Ukuran: 250KB | Terakhir Diperbarui: Februari 2026
+            </p>
+
+            <div class="cv-features">
+                <div class="cv-feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>ATS Optimized</h3>
+                    <p>Format yang kompatibel dengan sistem pelacakan pelamar</p>
+                </div>
+                <div class="cv-feature">
+                    <i class="fas fa-star"></i>
+                    <h3>Professional Design</h3>
+                    <p>Desain modern dan mudah dibaca</p>
+                </div>
+                <div class="cv-feature">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Friendly</h3>
+                    <p>Dapat dibuka dengan sempurna di semua perangkat</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 50px;">Hubungi Saya</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h3>WhatsApp</h3>
+                            <p>+62 822 4479 7292</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>dwicahyono010100@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Lokasi</h3>
+                            <p>Jawa Timur, Indonesia</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Download CV</h3>
+                            <p>Klik tombol di bawah untuk download CV lengkap saya</p>
+                            <a href="#cv-download" class="btn btn-orange" style="margin-top: 10px; padding: 10px 20px; font-size: 0.95em;">
+                                <i class="fas fa-download"></i> Download CV PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Nama Lengkap *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email *" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Pesan Anda *" required></textarea>
+                    </div>
+                    <button class="btn" style="width: 100%; padding: 16px;">
+                        <i class="fas fa-paper-plane"></i> Kirim Pesan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Mohamad Dwi Cahyono</h3>
+                    <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 20px; line-height: 1.7;">
+                        Fresh graduate TKJ dengan passion di bidang teknologi informasi. Siap berkembang dan berkontribusi di dunia IT.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@Superrdinn" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://web.telegram.org/k/" class="social-link" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="#" class="social-link" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> Tentang Saya</a></li>
+                        <li><a href="#skills"><i class="fas fa-chevron-right"></i> Keahlian</a></li>
+                        <li><a href="#portfolio"><i class="fas fa-chevron-right"></i> Portofolio</a></li>
+                        <li><a href="#experience"><i class="fas fa-chevron-right"></i> Pengalaman</a></li>
+                        <li><a href="#cv-download"><i class="fas fa-chevron-right"></i> Download CV</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Kontak</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Kontak Info</h3>
+                    <ul class="footer-links">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>dwicahyono010100@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fab fa-whatsapp"></i>
+                            <span>+62 822-4479-7292</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Jawa Timur, Indonesia</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-file-pdf"></i>
+                            <a href="#cv-download" style="color: rgba(255, 255, 255, 0.8);">Download CV PDF</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2026 Mohamad Dwi Cahyono. All Rights Reserved.</p>
+                <p style="margin-top: 8px; font-size: 0.9em;">Portofolio IT Support | Teknik Komputer dan Jaringan</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const target = document.querySelector(targetId);
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Animate progress bars on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.progress');
+                    progressBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 100);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const skillsSection = document.querySelector('.skills');
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+
+        // Timeline animation on scroll
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const items = entry.target.querySelectorAll('.timeline-item');
+                    items.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('visible');
+                        }, index * 200);
+                    });
+                    timelineObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        const timelineSection = document.querySelector('.timeline');
+        if (timelineSection) {
+            timelineObserver.observe(timelineSection);
+        }
+
+        // Form submission handling
+        const contactFormButton = document.querySelector('.contact-form button');
+        if (contactFormButton) {
+            contactFormButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                const form = this.closest('.contact-form');
+                const inputs = form.querySelectorAll('input, textarea');
+                let isValid = true;
+
+                inputs.forEach(input => {
+                    if (input.required && !input.value.trim()) {
+                        isValid = false;
+                        input.style.borderColor = '#ef4444';
+                        setTimeout(() => {
+                            input.style.borderColor = '';
+                        }, 2000);
+                    }
+                });
+
+                if (isValid) {
+                    // In production, you would send the form data to a server
+                    alert('✅ Pesan Anda telah terkirim!\n\nTerima kasih telah menghubungi saya. Saya akan segera membalas pesan Anda.');
+                    form.reset();
+                } else {
+                    alert('⚠️ Silakan lengkapi semua field yang wajib diisi (ditandai dengan *).');
+                }
+            });
+        }
+
+        // Add hover effects to portfolio items
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        portfolioItems.forEach((item, index) => {
+            item.addEventListener('mouseenter', function() {
+                this.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Add typing effect to hero text
+        const heroText = document.querySelector('.hero p');
+        if (heroText) {
+            const originalText = heroText.textContent;
+            heroText.textContent = '';
+            
+            let i = 0;
+            const typeWriter = function() {
+                if (i < originalText.length) {
+                    heroText.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            };
+            
+            // Start typing effect when page loads
+            setTimeout(typeWriter, 1000);
+        }
+
+        // Floating animation for hero image
+        const heroImage = document.querySelector('.hero-image');
+        if (heroImage) {
+            heroImage.style.animation = 'float 6s ease-in-out infinite';
+        }
+
+        // Add scroll indicator for mobile
+        if (window.innerWidth <= 768) {
+            const heroBtns = document.querySelector('.hero-btns');
+            if (heroBtns) {
+                const scrollIndicator = document.createElement('div');
+                scrollIndicator.innerHTML = '<i class="fas fa-chevron-down" style="font-size: 2em; color: var(--electric-blue); margin-top: 30px; animation: bounce 2s infinite;"></i>';
+                heroBtns.parentNode.appendChild(scrollIndicator);
+            }
+        }
+
+        // Add bounce animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes bounce {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-10px); }
+            }
+            @keyframes float {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-20px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
